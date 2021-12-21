@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject groundCheck;
     public LayerMask groundLayer;
 
+    public GameObject bullet;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jump = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (moveInput < 0)
+            {
+                Instantiate(bullet, player.transform.position + new Vector3 (-0.5f,0,0), bullet.transform.rotation);
+            }
+            else
+            {
+                Instantiate(bullet, player.transform.position + new Vector3(0.5f, 0, 0), bullet.transform.rotation);
+            }
         }
     }
 
